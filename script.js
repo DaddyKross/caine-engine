@@ -5,14 +5,26 @@ const logsButton=document.getElementById("logsButton");
 
 let savedName=localStorage.getItem("caine_user");
 let clickCount=0;
+let typingTimer=null;
 
 function typeMessage(lines,speed=50,callback=null){
+
+    if(typingTimer){
+        clearInterval(typingTimer);
+    }
+
     text.innerHTML="";
+
     let lineIndex=0;
 
     function typeLine(){
+
         if(lineIndex>=lines.length){
-            if(callback) callback();
+
+            if(callback){
+                callback();
+            }
+
             return;
         }
 
@@ -22,19 +34,26 @@ function typeMessage(lines,speed=50,callback=null){
 
         text.appendChild(lineElement);
 
-        let timer=setInterval(()=>{
+        typingTimer=setInterval(()=>{
 
             if(charIndex<currentLine.length){
+
                 lineElement.textContent+=currentLine[charIndex];
                 charIndex++;
+
             }
             else{
-                clearInterval(timer);
+
+                clearInterval(typingTimer);
+
                 lineIndex++;
+
                 setTimeout(typeLine,700);
+
             }
 
         },speed);
+
     }
 
     typeLine();
