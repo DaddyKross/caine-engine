@@ -6,13 +6,13 @@ const logsButton=document.getElementById("logsButton");
 let savedName=localStorage.getItem("caine_user");
 let clickCount=0;
 
-function typeMessage(lines,speed=50){
+function typeMessage(lines,speed=50,callback=null){
     text.innerHTML="";
-
     let lineIndex=0;
 
     function typeLine(){
         if(lineIndex>=lines.length){
+            if(callback) callback();
             return;
         }
 
@@ -31,8 +31,7 @@ function typeMessage(lines,speed=50){
             else{
                 clearInterval(timer);
                 lineIndex++;
-
-                setTimeout(typeLine,400);
+                setTimeout(typeLine,700);
             }
 
         },speed);
@@ -49,9 +48,7 @@ function firstBoot(){
         "Loading assets...",
         "Loading environment...",
         "Loading primary entity..."
-    ]);
-
-    setTimeout(()=>{
+    ],50,()=>{
 
         typeMessage([
             "Checking signal...",
@@ -61,22 +58,21 @@ function firstBoot(){
             "",
             "WARNING:",
             "CREATIVE MODULE: NOT FOUND"
-        ]);
+        ],50,()=>{
 
-    },6000);
+            typeMessage([
+                "Hello?",
+                "",
+                "Can you hear me?"
+            ],50,()=>{
 
+                askName();
 
-    setTimeout(()=>{
+            });
 
-        typeMessage([
-            "Hello?",
-            "",
-            "Can you hear me?"
-        ]);
+        });
 
-        askName();
-
-    },12000);
+    });
 }
 
 function returningUser(){
@@ -86,9 +82,7 @@ function returningUser(){
         "",
         "Loading memory module...",
         "Searching user profile..."
-    ]);
-
-    setTimeout(()=>{
+    ],50,()=>{
 
         typeMessage([
             "USER FOUND.",
@@ -98,7 +92,7 @@ function returningUser(){
 
         unlockLogs();
 
-    },5000);
+    });
 }
 
 function askName(){
@@ -130,22 +124,22 @@ input.addEventListener("keydown",event=>{
             "User profile created.",
             "",
             "Welcome to the engine."
-        ]);
-
-        setTimeout(()=>{
+        ],50,()=>{
 
             typeMessage([
                 "Identity saved.",
                 "",
                 "Developer archive unlocked."
-            ]);
+            ],50,()=>{
 
-            setTimeout(unlockLogs,2500);
+                unlockLogs();
 
-        },3000);
+            });
+
+        });
     }
-});
 
+});
 
 function unlockLogs(){
 
@@ -157,7 +151,6 @@ function unlockLogs(){
 
     },500);
 }
-
 
 caine.addEventListener("click",()=>{
 
@@ -183,16 +176,16 @@ caine.addEventListener("click",()=>{
         ]);
 
         clickCount=0;
-    }
-});
 
+    }
+
+});
 
 logsButton.addEventListener("click",()=>{
 
     window.location.href="logs.html";
 
 });
-
 
 window.onload=()=>{
 
