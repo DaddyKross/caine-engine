@@ -1,0 +1,208 @@
+* {
+    box-sizing:border-box;
+}
+
+body {
+    margin:0;
+    background:black;
+    color:white;
+    height:100vh;
+    overflow:hidden;
+    font-family:"Courier New",monospace;
+}
+
+body::after {
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,.03),
+        rgba(255,255,255,.03) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+}
+
+/* Версия */
+
+#version {
+    position:absolute;
+    top:20px;
+    left:25px;
+    color:#777;
+    font-size:14px;
+    letter-spacing:3px;
+}
+
+/* Верхний интерфейс */
+
+#topInterface {
+    position:absolute;
+    top:calc(38% - 120px);
+    left:50%;
+    transform:translateX(-50%);
+}
+
+#logsButton {
+    padding:10px 20px;
+    background:black;
+    color:red;
+    border:1px solid red;
+    font-family:"Courier New",monospace;
+    letter-spacing:2px;
+    cursor:pointer;
+    opacity:0;
+    transition:opacity 1s;
+}
+
+#logsButton.visible {
+    opacity:1;
+}
+
+#logsButton:hover {
+    background:red;
+    color:black;
+}
+
+/* CAINE CORE */
+
+#caine {
+    position:absolute;
+    top:38%;
+    left:50%;
+    width:70px;
+    height:70px;
+    transform:translate(-50%,-50%);
+    background:red;
+    border-radius:50%;
+    box-shadow:
+        0 0 15px red,
+        0 0 40px red,
+        0 0 80px red;
+    cursor:pointer;
+    animation:cainePulse 2s infinite;
+}
+
+@keyframes cainePulse {
+    0% {
+        opacity:.7;
+    }
+
+    50% {
+        opacity:1;
+    }
+
+    100% {
+        opacity:.7;
+    }
+}
+
+/* Терминал */
+
+#terminal {
+    position:absolute;
+    top:52%;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    text-align:center;
+}
+
+#text {
+    height:120px;
+    font-size:18px;
+    line-height:1.7;
+}
+
+/* Имя игрока */
+
+#nameInput {
+    margin-top:20px;
+    width:240px;
+    padding:10px;
+    background:black;
+    color:white;
+    border:1px solid red;
+    font-family:"Courier New",monospace;
+    text-align:center;
+}
+
+#nameInput:focus {
+    outline:none;
+    box-shadow:0 0 10px red;
+}
+
+/* Статус */
+
+#statusBar {
+    position:absolute;
+    bottom:20px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    color:#555;
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+/* Архив разработчиков */
+
+#archive {
+    position:absolute;
+    top:120px;
+    left:50%;
+    transform:translateX(-50%);
+    width:600px;
+    text-align:center;
+}
+
+#archive h2 {
+    color:red;
+    letter-spacing:3px;
+}
+
+.file {
+    margin:20px;
+    cursor:pointer;
+    color:white;
+}
+
+.file:hover {
+    color:red;
+}
+
+.locked {
+    color:#555;
+}
+
+#content {
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid #333;
+    text-align:left;
+}
+
+pre {
+    font-family:"Courier New",monospace;
+    color:#ddd;
+    white-space:pre-wrap;
+}
+
+/* Кнопки внутри архива */
+
+button {
+    background:black;
+    color:red;
+    border:1px solid red;
+    padding:10px 30px;
+    font-family:"Courier New",monospace;
+    cursor:pointer;
+}
+
+button:hover {
+    background:red;
+    color:black;
+}
