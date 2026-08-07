@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,55 +10,54 @@
 
 <body>
 
+<div id="version">
+    CAINE ENGINE<br>
+    DEVELOPMENT ARCHIVE
+</div>
+
+
 <div id="archive">
 
     <h2>
-        CAINE DEVELOPMENT ARCHIVE
+        DEVELOPMENT LOGS
     </h2>
 
-    <div class="file">
-        BUILD_0000.01.log
+
+    <div class="file" data-log="build01">
+        BUILD 0000.01
     </div>
 
-    <div class="file locked">
-        BUILD_0000.02.log
-        [LOCKED]
+
+    <div class="file" data-log="build02">
+        BUILD 0000.02
     </div>
 
-    <div class="file locked">
-        CREATIVE_MODULE.log
-        [LOCKED]
+
+    <div class="file" data-log="build03">
+        BUILD 0000.03
     </div>
 
-    <div class="file locked">
-        UNKNOWN_ENTITY.log
-        [LOCKED]
+
+    <div class="locked">
+        BUILD 0000.04<br>
+        ACCESS DENIED
     </div>
+
 
     <div id="content">
 
 <pre>
-CAINE ENGINE
-BUILD 0000.01
-
-Initial prototype created.
-
-Status:
-ONLINE
-
-Notes:
-The system responds correctly.
-
-Further testing required.
+SELECT DEVELOPMENT LOG
 </pre>
 
     </div>
 
-    <button onclick="location.href='index.html'">
-        RETURN TO ENGINE
-    </button>
 
 </div>
 
+
+<script src="logs.js"></script>
+
 </body>
+
 </html>
