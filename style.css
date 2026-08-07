@@ -25,6 +25,7 @@ body::after {
     );
 }
 
+
 /* Версия */
 
 #version {
@@ -36,6 +37,7 @@ body::after {
     letter-spacing:3px;
 }
 
+
 /* Верхний интерфейс */
 
 #topInterface {
@@ -43,7 +45,9 @@ body::after {
     top:calc(38% - 120px);
     left:50%;
     transform:translateX(-50%);
+    z-index:10;
 }
+
 
 #logsButton {
     padding:10px 20px;
@@ -57,14 +61,17 @@ body::after {
     transition:opacity 1s;
 }
 
+
 #logsButton.visible {
     opacity:1;
 }
+
 
 #logsButton:hover {
     background:red;
     color:black;
 }
+
 
 /* CAINE CORE */
 
@@ -85,7 +92,9 @@ body::after {
     animation:cainePulse 2s infinite;
 }
 
+
 @keyframes cainePulse {
+
     0% {
         opacity:.7;
     }
@@ -97,7 +106,9 @@ body::after {
     100% {
         opacity:.7;
     }
+
 }
+
 
 /* Терминал */
 
@@ -110,13 +121,27 @@ body::after {
     text-align:center;
 }
 
+
 #text {
     height:120px;
     font-size:18px;
     line-height:1.7;
 }
 
-/* Имя игрока */
+
+/* Цвета сообщений */
+
+.redText {
+    color:red;
+}
+
+
+.pinkText {
+    color:#ff8fb1;
+}
+
+
+/* Поле имени */
 
 #nameInput {
     margin-top:20px;
@@ -129,10 +154,12 @@ body::after {
     text-align:center;
 }
 
+
 #nameInput:focus {
     outline:none;
     box-shadow:0 0 10px red;
 }
+
 
 /* Статус */
 
@@ -148,21 +175,25 @@ body::after {
     letter-spacing:2px;
 }
 
+
 /* Архив разработчиков */
 
 #archive {
     position:absolute;
-    top:120px;
+    top:100px;
     left:50%;
     transform:translateX(-50%);
-    width:600px;
+    width:700px;
+    max-width:90%;
     text-align:center;
 }
 
+
 #archive h2 {
     color:red;
-    letter-spacing:3px;
+    letter-spacing:4px;
 }
+
 
 .file {
     margin:20px;
@@ -170,28 +201,37 @@ body::after {
     color:white;
 }
 
+
 .file:hover {
     color:red;
 }
 
+
 .locked {
+    margin:20px;
     color:#555;
 }
+
 
 #content {
     margin-top:40px;
     padding-top:20px;
     border-top:1px solid #333;
     text-align:left;
+    height:350px;
+    overflow-y:auto;
 }
+
 
 pre {
     font-family:"Courier New",monospace;
     color:#ddd;
     white-space:pre-wrap;
+    line-height:1.5;
 }
 
-/* Кнопки внутри архива */
+
+/* Общие кнопки */
 
 button {
     background:black;
@@ -202,7 +242,20 @@ button {
     cursor:pointer;
 }
 
+
 button:hover {
     background:red;
     color:black;
+}
+
+#content::-webkit-scrollbar {
+    width:8px;
+}
+
+#content::-webkit-scrollbar-track {
+    background:black;
+}
+
+#content::-webkit-scrollbar-thumb {
+    background:red;
 }
