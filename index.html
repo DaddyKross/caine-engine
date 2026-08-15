@@ -1,46 +1,118 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAINE ENGINE | BUILD 0000.03</title>
-    <link rel="stylesheet" href="style.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CAINE ENGINE</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="favicon.png?v=2"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
 
 <body>
 
-<div id="version">
-    CAINE ENGINE<br>
-    BUILD 0000.03
-</div>
+    <!-- =====================================
+         ВЕРСИЯ
+         ===================================== -->
 
-<div id="topInterface">
-    <button id="logsButton">
-        DEVELOPMENT LOGS
-    </button>
-</div>
+    <div id="version">
+        CAINE ENGINE<br>
+        BUILD 0000.04
+    </div>
 
-<div id="caine"></div>
 
-<div id="terminal">
+    <!-- =====================================
+         ВЕРХНИЙ ИНТЕРФЕЙС
+         ===================================== -->
 
-    <div id="text"></div>
+    <div id="topInterface">
 
-    <input 
-        id="nameInput"
-        type="text"
-        placeholder="ENTER YOUR NAME..."
-        hidden>
+        <button
+            id="logsButton"
+            hidden
+        >
+            DEVELOPMENT LOGS
+        </button>
 
-</div>
+    </div>
 
-<div id="statusBar">
-    <span>STATUS : STABLE</span>
-    <span>CORE : ACTIVE</span>
-    <span>BUILD : 0000.03</span>
-</div>
 
-<script src="script.js"></script>
+    <!-- =====================================
+         СЛОЙ ДЛЯ БАГОВ
+         ===================================== -->
+
+    <div id="bugLayer"></div>
+
+
+    <!-- =====================================
+         CAINE CORE
+         ===================================== -->
+
+    <div id="caine"></div>
+
+
+    <!-- =====================================
+         ТЕРМИНАЛ
+         ===================================== -->
+
+    <div id="terminal">
+
+        <div id="text"></div>
+
+
+        <input
+            id="nameInput"
+            type="text"
+            placeholder="ENTER YOUR NAME..."
+            hidden
+        >
+
+    </div>
+
+
+    <!-- =====================================
+         СТАТУС
+         ===================================== -->
+
+    <div id="statusBar">
+
+        <span>
+            STATUS : STABLE
+        </span>
+
+        <span>
+            CORE : ACTIVE
+        </span>
+
+        <span>
+            BUILD : 0000.04
+        </span>
+
+    </div>
+
+
+    <!-- =====================================
+         SCRIPT
+         ===================================== -->
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
