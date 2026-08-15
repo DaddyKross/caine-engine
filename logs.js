@@ -1,96 +1,209 @@
-let files=document.querySelectorAll(".file");
-let content=document.getElementById("content");
+/* =========================================
+   CAINE ENGINE
+   DEVELOPMENT LOGS
+   ========================================= */
 
 
-let logs={
+/* =========================================
+   ПОЛУЧАЕМ ЭЛЕМЕНТЫ
+   ========================================= */
 
-    build01:`
-CAINE ENGINE DEVELOPMENT LOG
-
-BUILD 0000.01
-
-STATUS:
-ARCHIVED
-
-
-Initial prototype created.
+const builds =
+    document.querySelectorAll(
+        ".build.available"
+    );
 
 
-Core systems:
-
-- Interface rendering
-- Basic interaction module
-- User identification
-
-
-No abnormal behavior detected.
-`,
+const logMessages =
+    document.querySelectorAll(
+        ".logMessage[data-content]"
+    );
 
 
-    build02:`
-CAINE ENGINE DEVELOPMENT LOG
-
-BUILD 0000.02
-
-STATUS:
-STABLE
+const defaultMessage =
+    document.getElementById(
+        "defaultMessage"
+    );
 
 
-Public prototype release.
+/* =========================================
+   ПОКАЗ ЗАПИСИ
+   ========================================= */
+
+function showBuild(buildNumber) {
 
 
-Added:
+    /* -------------------------------------
+       Убираем активность со всех билдов
+       ------------------------------------- */
 
-- Memory module
-- User recognition
-- Extended response system
+    builds.forEach(
+        build => {
 
-
-Observation:
-
-Some unexpected responses appeared during testing.
-`,
-
-
-    build03:`
-CAINE ENGINE DEVELOPMENT LOG
-
-BUILD 0000.03
-
-STATUS:
-IN DEVELOPMENT
-
-
-Current objectives:
-
-- Expand interaction system
-- Improve response randomness
-- Analyze user behavior
-
-
-Additional note:
-
-The system appears to generate responses outside
-of initial parameters.
-
-Investigation continues.
-`
-
-};
-
-
-
-files.forEach(file=>{
-
-    file.addEventListener(
-        "click",
-        ()=>{
-
-            let id=file.dataset.log;
-
-            content.innerHTML="<pre>"+logs[id]+"</pre>";
+            build.classList.remove(
+                "active"
+            );
 
         }
     );
 
-});
+
+    /* -------------------------------------
+       Прячем все записи
+       ------------------------------------- */
+
+    logMessages.forEach(
+        message => {
+
+            message.classList.add(
+                "hidden"
+            );
+
+        }
+    );
+
+
+    /* -------------------------------------
+       Прячем стартовое сообщение
+       ------------------------------------- */
+
+    if (defaultMessage) {
+
+        defaultMessage.classList.add(
+            "hidden"
+        );
+
+    }
+
+
+    /* -------------------------------------
+       Находим нужный билд
+       ------------------------------------- */
+
+    const selectedBuild =
+        document.querySelector(
+            `.build[data-build="${buildNumber}"]`
+        );
+
+
+    const selectedMessage =
+        document.querySelector(
+            `.logMessage[data-content="${buildNumber}"]`
+        );
+
+
+    /* -------------------------------------
+       Если запись существует
+       ------------------------------------- */
+
+    if (selectedBuild) {
+
+        selectedBuild.classList.add(
+            "active"
+        );
+    }
+
+
+    if (selectedMessage) {
+
+        selectedMessage.classList.remove(
+            "hidden"
+        );
+
+
+        /*
+         * Каждый раз после выбора
+         * возвращаем скролл наверх.
+         */
+
+        const content =
+            document.getElementById(
+                "logContent"
+            );
+
+
+        if (content) {
+
+            content.scrollTop = 0;
+        }
+    }
+
+}
+
+
+/* =========================================
+   КЛИКИ ПО ДОСТУПНЫМ БИЛДАМ
+   ========================================= */
+
+builds.forEach(
+    build => {
+
+        build.addEventListener(
+            "click",
+            () => {
+
+                const buildNumber =
+                    build.dataset.build;
+
+
+                showBuild(
+                    buildNumber
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================
+   ЗАЩИТА ЗАКРЫТЫХ ЗАПИСЕЙ
+   ========================================= */
+
+const lockedBuilds =
+    document.querySelectorAll(
+        ".build.locked"
+    );
+
+
+lockedBuilds.forEach(
+    build => {
+
+        build.addEventListener(
+            "click",
+            () => {
+
+                /*
+                 * Пока просто показываем
+                 * сообщение в консоли.
+                 *
+                 * В будущих билдах здесь
+                 * можно будет сделать
+                 * настоящую систему пароля.
+                 */
+
+                console.log(
+                    "ACCESS DENIED: " +
+                    build.dataset.build
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================
+   АВТОМАТИЧЕСКИ ПОКАЗЫВАЕМ 0000.03
+   ========================================= */
+
+/*
+ * Последний полностью завершённый билд
+ * показывается при открытии страницы.
+ */
+
+showBuild(
+    "0000.03"
+);
