@@ -1,0 +1,438 @@
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100%;
+
+    background: black;
+    color: white;
+
+    font-family:
+        "Courier New",
+        monospace;
+}
+
+
+/* =========================================
+   СКАНИРУЮЩИЕ ЛИНИИ
+   ========================================= */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.03),
+            rgba(255,255,255,.03) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+
+    z-index: 100;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+#header {
+    width: 100%;
+
+    padding:
+        30px
+        30px
+        20px
+        30px;
+
+    border-bottom: 1px solid #222;
+
+    text-align: center;
+}
+
+
+#systemTitle {
+    color: red;
+
+    font-size: 22px;
+
+    letter-spacing: 5px;
+}
+
+
+#pageTitle {
+    margin-top: 10px;
+
+    color: #aaa;
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+}
+
+
+#accessStatus {
+    margin-top: 15px;
+
+    color: #555;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   ОСНОВНАЯ ОБЛАСТЬ
+   ========================================= */
+
+#archive {
+
+    width: 900px;
+    max-width: calc(100% - 40px);
+
+    margin: 0 auto;
+
+    padding:
+        30px
+        0
+        100px;
+
+}
+
+
+/* =========================================
+   СПИСОК БИЛДОВ
+   ========================================= */
+
+#buildList {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 30px;
+}
+
+
+.build {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding:
+        12px
+        15px;
+
+    border: 1px solid #222;
+
+    background: #050505;
+
+    transition:
+        border-color .2s,
+        background .2s,
+        color .2s;
+}
+
+
+/* Обычные доступные записи */
+
+.build.available {
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.build.available:hover {
+
+    border-color: red;
+
+    background: #100000;
+
+    color: red;
+}
+
+
+/* Активная запись */
+
+.build.active {
+
+    border-color: red;
+
+    background: #100000;
+
+    color: red;
+}
+
+
+/* Статусы */
+
+.buildStatus {
+
+    color: #555;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.buildStatus.development {
+
+    color: #ff8fb3;
+}
+
+
+/* =========================================
+   ЗАКРЫТЫЕ БИЛДЫ
+   ========================================= */
+
+.build.locked {
+
+    color: #333;
+
+    border-color: #111;
+
+    cursor: not-allowed;
+}
+
+
+.build.locked .buildStatus {
+
+    color: #333;
+}
+
+
+.build.locked:hover {
+
+    border-color: #222;
+
+    background: #050505;
+
+    color: #444;
+}
+
+
+/* =========================================
+   ОБЛАСТЬ ЛОГА
+   ========================================= */
+
+#logContent {
+
+    min-height: 350px;
+
+    max-height: 55vh;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    padding: 30px;
+
+    border:
+        1px solid #222;
+
+    background:
+        rgba(0,0,0,.7);
+}
+
+
+/*
+ * Полоса прокрутки
+ */
+
+#logContent::-webkit-scrollbar {
+
+    width: 8px;
+}
+
+
+#logContent::-webkit-scrollbar-track {
+
+    background: #050505;
+}
+
+
+#logContent::-webkit-scrollbar-thumb {
+
+    background: #333;
+
+    border-radius: 2px;
+}
+
+
+#logContent::-webkit-scrollbar-thumb:hover {
+
+    background: red;
+}
+
+
+/* =========================================
+   ТЕКСТ ЛОГА
+   ========================================= */
+
+.logMessage {
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    color: #ddd;
+}
+
+
+.logMessage h2 {
+
+    margin-top: 0;
+
+    color: red;
+
+    font-size: 18px;
+
+    letter-spacing: 3px;
+}
+
+
+.separator {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin:
+        15px
+        0
+        25px;
+
+    background: #222;
+}
+
+
+.hidden {
+
+    display: none;
+}
+
+
+/* =========================================
+   ЦВЕТА
+   ========================================= */
+
+.red {
+
+    color: red;
+}
+
+
+.pink {
+
+    color: #ff8fb3;
+}
+
+
+.purple {
+
+    color: #8a2be2;
+}
+
+
+.dim {
+
+    color: #555;
+}
+
+
+.classified {
+
+    color: #444;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 50px;
+
+    padding: 15px;
+
+    background: black;
+
+    border-top: 1px solid #222;
+
+    color: #444;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    z-index: 50;
+}
+
+
+/* =========================================
+   АДАПТАЦИЯ
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    #archive {
+
+        max-width:
+            calc(100% - 20px);
+
+        padding-top: 20px;
+    }
+
+
+    #logContent {
+
+        padding: 20px;
+
+        max-height: 60vh;
+    }
+
+
+    footer {
+
+        gap: 15px;
+
+        font-size: 8px;
+    }
+
+}
