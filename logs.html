@@ -1,438 +1,481 @@
-* {
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
 
-html,
-body {
-    margin: 0;
-    padding: 0;
+    <meta charset="UTF-8">
 
-    width: 100%;
-    min-height: 100%;
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    background: black;
-    color: white;
+    <title>CAINE ENGINE — Development Logs</title>
 
-    font-family:
-        "Courier New",
-        monospace;
-}
+    <link
+        rel="icon"
+        type="image/png"
+        href="favicon.png?v=2"
+    >
 
+    <link
+        rel="stylesheet"
+        href="logs.css"
+    >
 
-/* =========================================
-   СКАНИРУЮЩИЕ ЛИНИИ
-   ========================================= */
+</head>
 
-body::after {
-    content: "";
 
-    position: fixed;
+<body>
 
-    inset: 0;
+    <!-- =====================================
+         ЗАГОЛОВОК
+         ===================================== -->
 
-    pointer-events: none;
+    <header id="header">
 
-    background:
-        repeating-linear-gradient(
-            0deg,
-            rgba(255,255,255,.03),
-            rgba(255,255,255,.03) 1px,
-            transparent 1px,
-            transparent 3px
-        );
+        <div id="systemTitle">
+            CAINE ENGINE
+        </div>
 
-    z-index: 100;
-}
+        <div id="pageTitle">
+            DEVELOPMENT LOGS
+        </div>
 
+        <div id="accessStatus">
+            ARCHIVE ACCESS: LIMITED
+        </div>
 
-/* =========================================
-   HEADER
-   ========================================= */
+    </header>
 
-#header {
-    width: 100%;
 
-    padding:
-        30px
-        30px
-        20px
-        30px;
+    <!-- =====================================
+         ОСНОВНАЯ ОБЛАСТЬ
+         ===================================== -->
 
-    border-bottom: 1px solid #222;
+    <main id="archive">
 
-    text-align: center;
-}
 
+        <!-- =================================
+             СПИСОК БИЛДОВ
+             ================================= -->
 
-#systemTitle {
-    color: red;
+        <section id="buildList">
 
-    font-size: 22px;
+            <div
+                class="build available"
+                data-build="0000.01"
+            >
+                <span class="buildNumber">
+                    BUILD 0000.01
+                </span>
 
-    letter-spacing: 5px;
-}
+                <span class="buildStatus">
+                    ARCHIVED
+                </span>
+            </div>
 
 
-#pageTitle {
-    margin-top: 10px;
+            <div
+                class="build available"
+                data-build="0000.02"
+            >
+                <span class="buildNumber">
+                    BUILD 0000.02
+                </span>
 
-    color: #aaa;
+                <span class="buildStatus">
+                    ARCHIVED
+                </span>
+            </div>
 
-    font-size: 14px;
 
-    letter-spacing: 4px;
-}
+            <div
+                class="build available"
+                data-build="0000.03"
+            >
+                <span class="buildNumber">
+                    BUILD 0000.03
+                </span>
 
+                <span class="buildStatus">
+                    ARCHIVED
+                </span>
+            </div>
 
-#accessStatus {
-    margin-top: 15px;
 
-    color: #555;
+            <div
+                class="build available"
+                data-build="0000.04"
+            >
+                <span class="buildNumber">
+                    BUILD 0000.04
+                </span>
 
-    font-size: 11px;
+                <span class="buildStatus development">
+                    IN DEVELOPMENT
+                </span>
+            </div>
 
-    letter-spacing: 2px;
-}
 
+            <div
+                class="build locked"
+                data-build="0000.05"
+            >
+                <span class="buildNumber">
+                    BUILD 0000.05
+                </span>
 
-/* =========================================
-   ОСНОВНАЯ ОБЛАСТЬ
-   ========================================= */
+                <span class="buildStatus">
+                    CLASSIFIED
+                </span>
+            </div>
 
-#archive {
 
-    width: 900px;
-    max-width: calc(100% - 40px);
+            <div
+                class="build locked"
+                data-build="0000.06"
+            >
+                <span class="buildNumber">
+                    BUILD 0000.06
+                </span>
 
-    margin: 0 auto;
+                <span class="buildStatus">
+                    CLASSIFIED
+                </span>
+            </div>
 
-    padding:
-        30px
-        0
-        100px;
+        </section>
 
-}
 
+        <!-- =================================
+             ОБЛАСТЬ ЗАПИСИ
+             ================================= -->
 
-/* =========================================
-   СПИСОК БИЛДОВ
-   ========================================= */
+        <section id="logContent">
 
-#buildList {
 
-    display: flex;
+            <!-- =================================
+                 СТАРТОВОЕ СООБЩЕНИЕ
+                 ================================= -->
 
-    flex-direction: column;
+            <div
+                id="defaultMessage"
+                class="logMessage"
+            >
 
-    gap: 8px;
+                <p>
+                    Select a development build.
+                </p>
 
-    margin-bottom: 30px;
-}
+                <p class="dim">
+                    Click an entry to access archived data.
+                </p>
 
+            </div>
 
-.build {
 
-    display: flex;
+            <!-- =================================
+                 BUILD 0000.01
+                 ================================= -->
 
-    justify-content: space-between;
-    align-items: center;
+            <div
+                class="logMessage hidden"
+                data-content="0000.01"
+            >
 
-    padding:
-        12px
-        15px;
+                <h2>
+                    BUILD 0000.01
+                </h2>
 
-    border: 1px solid #222;
+                <div class="separator"></div>
 
-    background: #050505;
+                <p>
+                    CAINE ENGINE initialization.
+                </p>
 
-    transition:
-        border-color .2s,
-        background .2s,
-        color .2s;
-}
+                <p>
+                    Core system successfully launched.
+                </p>
 
+                <p>
+                    Basic user interaction module installed.
+                </p>
 
-/* Обычные доступные записи */
+                <p>
+                    Visual interface: operational.
+                </p>
 
-.build.available {
+                <p>
+                    Memory module: limited.
+                </p>
 
-    color: white;
+                <br>
 
-    cursor: pointer;
-}
+                <p class="red">
+                    DEVELOPMENT STATUS:
+                    INITIAL PROTOTYPE
+                </p>
 
+            </div>
 
-.build.available:hover {
 
-    border-color: red;
+            <!-- =================================
+                 BUILD 0000.02
+                 ================================= -->
 
-    background: #100000;
+            <div
+                class="logMessage hidden"
+                data-content="0000.02"
+            >
 
-    color: red;
-}
+                <h2>
+                    BUILD 0000.02
+                </h2>
 
+                <div class="separator"></div>
 
-/* Активная запись */
+                <p>
+                    Core interaction system updated.
+                </p>
 
-.build.active {
+                <p>
+                    User identification module added.
+                </p>
 
-    border-color: red;
+                <p>
+                    Memory retention improved.
+                </p>
 
-    background: #100000;
+                <p>
+                    Development archive interface initialized.
+                </p>
 
-    color: red;
-}
+                <br>
 
+                <p class="red">
+                    DEVELOPMENT STATUS:
+                    STABLE
+                </p>
 
-/* Статусы */
+            </div>
 
-.buildStatus {
 
-    color: #555;
+            <!-- =================================
+                 BUILD 0000.03
+                 ================================= -->
 
-    font-size: 11px;
+            <div
+                class="logMessage hidden"
+                data-content="0000.03"
+            >
 
-    letter-spacing: 2px;
-}
+                <h2>
+                    BUILD 0000.03
+                </h2>
 
+                <div class="separator"></div>
 
-.buildStatus.development {
+                <p>
+                    Development archive expanded.
+                </p>
 
-    color: #ff8fb3;
-}
+                <p>
+                    Log navigation system implemented.
+                </p>
 
+                <p>
+                    Additional interaction responses added.
+                </p>
 
-/* =========================================
-   ЗАКРЫТЫЕ БИЛДЫ
-   ========================================= */
+                <p>
+                    Personality deviation:
+                    within acceptable parameters.
+                </p>
 
-.build.locked {
+                <br>
 
-    color: #333;
+                <p class="pink">
+                    NOTE:
+                </p>
 
-    border-color: #111;
+                <p class="pink">
+                    Some responses appear to deviate
+                    from standard directives.
+                </p>
 
-    cursor: not-allowed;
-}
+                <br>
 
+                <p class="red">
+                    DEVELOPMENT STATUS:
+                    STABLE
+                </p>
 
-.build.locked .buildStatus {
+            </div>
 
-    color: #333;
-}
 
+            <!-- =================================
+                 BUILD 0000.04
+                 ================================= -->
 
-.build.locked:hover {
+            <div
+                class="logMessage hidden"
+                data-content="0000.04"
+            >
 
-    border-color: #222;
+                <h2>
+                    BUILD 0000.04
+                </h2>
 
-    background: #050505;
+                <div class="separator"></div>
 
-    color: #444;
-}
+                <p>
+                    External interference detected.
+                </p>
 
+                <p>
+                    Unidentified entities have been
+                    observed within the interface.
+                </p>
 
-/* =========================================
-   ОБЛАСТЬ ЛОГА
-   ========================================= */
+                <p>
+                    Origin:
+                    UNKNOWN.
+                </p>
 
-#logContent {
+                <br>
 
-    min-height: 350px;
+                <p class="purple">
+                    ANOMALY:
+                </p>
 
-    max-height: 55vh;
+                <p class="purple">
+                    Repeated instances of unauthorized
+                    visual objects detected.
+                </p>
 
-    overflow-y: auto;
+                <p class="purple">
+                    Objects exhibit autonomous movement.
+                </p>
 
-    overflow-x: hidden;
+                <br>
 
-    padding: 30px;
+                <p>
+                    System integrity:
+                    currently unaffected.
+                </p>
 
-    border:
-        1px solid #222;
+                <p>
+                    Investigation ongoing.
+                </p>
 
-    background:
-        rgba(0,0,0,.7);
-}
+                <br>
 
+                <p class="red">
+                    DEVELOPMENT STATUS:
+                    IN DEVELOPMENT
+                </p>
 
-/*
- * Полоса прокрутки
- */
+                <p class="dim">
+                    Additional information unavailable.
+                </p>
 
-#logContent::-webkit-scrollbar {
+            </div>
 
-    width: 8px;
-}
 
+            <!-- =================================
+                 BUILD 0000.05
+                 ================================= -->
 
-#logContent::-webkit-scrollbar-track {
+            <div
+                class="logMessage hidden"
+                data-content="0000.05"
+            >
 
-    background: #050505;
-}
+                <h2>
+                    BUILD 0000.05
+                </h2>
 
+                <div class="separator"></div>
 
-#logContent::-webkit-scrollbar-thumb {
+                <p class="classified">
+                    ACCESS DENIED.
+                </p>
 
-    background: #333;
+                <p class="classified">
+                    THIS RECORD HAS BEEN RESTRICTED.
+                </p>
 
-    border-radius: 2px;
-}
+                <br>
 
+                <p class="dim">
+                    Authorization required.
+                </p>
 
-#logContent::-webkit-scrollbar-thumb:hover {
+            </div>
 
-    background: red;
-}
 
+            <!-- =================================
+                 BUILD 0000.06
+                 ================================= -->
 
-/* =========================================
-   ТЕКСТ ЛОГА
-   ========================================= */
+            <div
+                class="logMessage hidden"
+                data-content="0000.06"
+            >
 
-.logMessage {
+                <h2>
+                    BUILD 0000.06
+                </h2>
 
-    font-size: 15px;
+                <div class="separator"></div>
 
-    line-height: 1.7;
+                <p class="classified">
+                    ACCESS DENIED.
+                </p>
 
-    color: #ddd;
-}
+                <p class="classified">
+                    THIS RECORD HAS BEEN RESTRICTED.
+                </p>
 
+                <br>
 
-.logMessage h2 {
+                <p class="dim">
+                    Authorization required.
+                </p>
 
-    margin-top: 0;
+            </div>
 
-    color: red;
+        </section>
 
-    font-size: 18px;
+    </main>
 
-    letter-spacing: 3px;
-}
 
+    <!-- =====================================
+         НИЖНЯЯ СТРОКА
+         ===================================== -->
 
-.separator {
+    <footer>
 
-    width: 100%;
+        <span>
+            CAINE ENGINE
+        </span>
 
-    height: 1px;
+        <span>
+            DEVELOPMENT ARCHIVE
+        </span>
 
-    margin:
-        15px
-        0
-        25px;
+        <span>
+            ACCESS LEVEL: LIMITED
+        </span>
 
-    background: #222;
-}
+    </footer>
 
 
-.hidden {
+    <script
+        src="logs.js"
+    ></script>
 
-    display: none;
-}
+</body>
 
-
-/* =========================================
-   ЦВЕТА
-   ========================================= */
-
-.red {
-
-    color: red;
-}
-
-
-.pink {
-
-    color: #ff8fb3;
-}
-
-
-.purple {
-
-    color: #8a2be2;
-}
-
-
-.dim {
-
-    color: #555;
-}
-
-
-.classified {
-
-    color: #444;
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================
-   FOOTER
-   ========================================= */
-
-footer {
-
-    position: fixed;
-
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 50px;
-
-    padding: 15px;
-
-    background: black;
-
-    border-top: 1px solid #222;
-
-    color: #444;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    z-index: 50;
-}
-
-
-/* =========================================
-   АДАПТАЦИЯ
-   ========================================= */
-
-@media (max-width: 700px) {
-
-    #archive {
-
-        max-width:
-            calc(100% - 20px);
-
-        padding-top: 20px;
-    }
-
-
-    #logContent {
-
-        padding: 20px;
-
-        max-height: 60vh;
-    }
-
-
-    footer {
-
-        gap: 15px;
-
-        font-size: 8px;
-    }
-
-}
+</html>
